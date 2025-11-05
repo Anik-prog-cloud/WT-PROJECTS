@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bouncing Loader</title>
+  <style>
+    :root {
+      --dot-size: 16px; /* Increased size */
+      --dot-gap: 8px;
+      --dot-color: #2563eb; /* blue */
+      --speed: 0.5s;
+      --easing: ease-in-out;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f3f4f6;
+    }
+
+    .loader {
+      display: inline-flex;
+      gap: var(--dot-gap);
+      align-items: flex-end;
+      height: calc(var(--dot-size) * 3);
+    }
+
+    .dot {
+      width: var(--dot-size);
+      height: var(--dot-size);
+      border-radius: 50%;
+      background: var(--dot-color);
+      animation: bounce var(--speed) var(--easing) infinite;
+    }
+
+    .dot:nth-child(1) { animation-delay: 0s; }
+    .dot:nth-child(2) { animation-delay: calc(var(--speed) / 3); }
+    .dot:nth-child(3) { animation-delay: calc(var(--speed) * 2 / 3); }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-12px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</body>
+</html>
